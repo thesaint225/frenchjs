@@ -6,6 +6,7 @@ const blogpage = () => {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [content, setContent] = useState("");
+  const [submitted, setSubmitted] = useState(false);
 
   log(owner);
   log(title);
@@ -21,6 +22,11 @@ const blogpage = () => {
       content,
     };
     log("Payload:", teamPayload);
+    setSubmitted(true);
+    setOwner("");
+    setTitle("");
+    setDescription("");
+    setContent("");
 
     // send data over the server
     try {
