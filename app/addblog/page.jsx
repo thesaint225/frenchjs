@@ -30,7 +30,7 @@ const blogpage = () => {
 
     // send data over the server
     try {
-      const res = await fetch("http://localhost:3000/api/blogs", {
+      const res = await fetch(`${process.env.NEXT_PUBLIC_API_DOMAIN}/blogs`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

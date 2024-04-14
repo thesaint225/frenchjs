@@ -1,3 +1,5 @@
+import ButtonDelete from "@/component/Buttondelete";
+
 async function fetchblogs() {
   try {
     // const res = await fetch(`${process.env.NEXT_PUBLIC_API_DOMAIN}/blogs`, {
@@ -18,7 +20,7 @@ async function fetchblogs() {
 
 const Blogspage = async () => {
   const blogs = await fetchblogs();
-  console.log(blogs);
+  //   console.log(blogs);
   //   console.log(blogs.length);
   return (
     <>
@@ -48,6 +50,7 @@ const Blogspage = async () => {
             <div className="prose p-6">
               <p>{blog.content}</p>
             </div>
+            <ButtonDelete _id={blog._id} />
           </div>
         ))}
       </main>
