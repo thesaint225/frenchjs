@@ -55,3 +55,21 @@ export const POST = async (request) => {
     return new Response("Something went wrong", { status: 500 });
   }
 };
+
+// PUT/api/blogs
+export const PUT = async (request, { params: { _id } }) => {
+  console.log("This is the id:", _id);
+  try {
+    await connecteDb();
+
+    const blog = await Blog.findOneAndUpdate(_id);
+
+    if (!blog) return new Response("Property not found", { status: 404 });
+
+    revalidatePath("/blogs");
+    redirect("/blogs");
+  } catch (error) {
+    console.log(error);
+    return new Response("Something went wrong", { status: 500 });
+  }
+};

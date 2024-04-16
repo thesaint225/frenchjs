@@ -20,3 +20,21 @@ export const DELETE = async (request, { params: { _id } }) => {
     return new Response("Something went wrong", { status: 500 });
   }
 };
+
+// GET api/blogs/:id
+export const GET = async (req, { params: { _id } }) => {
+  try {
+    await connecteDb();
+    const blog = await Blog.findById({ _id });
+    if (!blog) return new Response("blog Not Found", { status: 400 });
+    return new Response(JSON.stringify(blog), {
+      status: 200,
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+  } catch (error) {
+    console.error(error);
+    return new Response("Something went wrong", { status: 500 });
+  }
+};

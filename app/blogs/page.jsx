@@ -1,3 +1,4 @@
+import BlogEditForm from "@/component/BlogEditForm";
 import ButtonDelete from "@/component/Buttondelete";
 
 async function fetchblogs() {
