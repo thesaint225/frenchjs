@@ -1,5 +1,5 @@
-import BlogEditForm from "@/component/BlogEditForm";
-import ButtonDelete from "@/component/Buttondelete";
+import BlogEditForm from "@/components/BlogEditForm";
+import ButtonDelete from "@/components/Buttondelete";
 
 async function fetchblogs() {
   try {
@@ -51,8 +51,8 @@ const Blogspage = async () => {
               {/* Content */}
               <div className="prose p-6">
                 <p>{blog.content}</p>
+                <ButtonDelete _id={blog._id} />
               </div>
-              <ButtonDelete _id={blog._id} />
             </div>
           );
         })}

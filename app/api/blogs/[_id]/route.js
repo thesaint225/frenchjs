@@ -38,3 +38,23 @@ export const GET = async (req, { params: { _id } }) => {
     return new Response("Something went wrong", { status: 500 });
   }
 };
+
+// PUT/api/blogs/:id
+export const PUT = async (request, { params: { _id } }) => {
+  const req = await request.json();
+  try {
+    await connecteDb();
+
+    const blog = await Blog.findByIdAndUpdate(_id, req);
+
+    if (!blog) return new Response("blog  not found", { status: 404 });
+
+    revalidatePath("/blogs");
+    revalidatePath(`/blogs/${_id}`);
+
+    return new Response(JSON.stringify(blog));
+  } catch (error) {
+    console.log(error);
+    return new Response("Something went wrong", { status: 500 });
+  }
+};

@@ -1,9 +1,8 @@
 "use client";
-
-const EditPage = () => {
+const BlogEditForm = () => {
   return (
     <div className="max-w-md mx-auto bg-white p-8 rounded-lg shadow-md">
-      <h2 className="text-2xl font-bold mb-4"> update Blog Post</h2>
+      <h2 className="text-2xl font-bold mb-4">Update Blog Post</h2>
       <form>
         {/* Owner Name */}
         <div className="mb-4">
@@ -16,7 +15,7 @@ const EditPage = () => {
           <input
             onChange={({ target }) => setOwner(target?.value)}
             placeholder="Enter your name"
-            // value={owner}
+            value=""
             type="text"
             id="owner"
             name="owner"
@@ -36,7 +35,7 @@ const EditPage = () => {
           <input
             onChange={({ target }) => setTitle(target?.value)}
             type="text"
-            // value={title}
+            value=""
             placeholder="Enter your title"
             id="title"
             name="title"
@@ -57,7 +56,7 @@ const EditPage = () => {
             onChange={({ target }) => setDescription(target?.value)}
             id="description"
             name="description"
-            // value={description}
+            value=""
             rows="4"
             className="w-full px-4 py-2 border rounded-md resize-none focus:outline-none focus:border-blue-500"
             required
@@ -76,7 +75,7 @@ const EditPage = () => {
             onChange={({ target }) => setContent(target?.value)}
             id="content"
             name="content"
-            // value={content}
+            value=""
             rows="6"
             className="w-full px-4 py-2 border rounded-md resize-none focus:outline-none focus:border-blue-500"
             required
@@ -85,15 +84,15 @@ const EditPage = () => {
 
         {/* Submit Button */}
         <button
-          //   onClick={handleSubmit}
-          type="update"
-          className="bg-green-500 text-white font-semibold px-4 py-2 rounded-md hover:bg-blue-600 focus:outline-none focus:bg-blue-600"
+          // onClick={handleSubmit}
+          type="submit"
+          className="bg-blue-500 text-white font-semibold px-4 py-2 rounded-md hover:bg-blue-600 focus:outline-none focus:bg-blue-600"
         >
-          update
+          Send
         </button>
       </form>
     </div>
   );
 };
 
-export default EditPage;
+export default BlogEditForm;
