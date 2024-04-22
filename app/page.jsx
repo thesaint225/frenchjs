@@ -1,6 +1,6 @@
-import Image from "next/image";
 import connecteDb from "@/config/db";
 import Blog from "@/models/posts";
+import CallToActionWithIllustration from "@/components/Hero";
 
 export default async function Home() {
   console.log(process.env.MONGODB_URI);
@@ -50,7 +50,8 @@ export default async function Home() {
 
   return (
     <>
-      <addForm />
+      <CallToActionWithIllustration />
+
       <h1>Welcome to learn french</h1>
     </>
   );
