@@ -1,6 +1,7 @@
 import connecteDb from "@/config/db";
 import Blog from "@/models/posts";
 import CallToActionWithIllustration from "@/components/Hero";
+import { signIn } from "@/auth";
 
 export default async function Home() {
   console.log(process.env.MONGODB_URI);

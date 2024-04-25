@@ -25,6 +25,7 @@ import {
 
 import NextLink from "next/link";
 import { Link } from "@chakra-ui/react";
+import { signIn } from "next-auth/react";
 
 export default function WithSubnavigation() {
   const { isOpen, onToggle } = useDisclosure();
@@ -76,15 +77,41 @@ export default function WithSubnavigation() {
           direction={"row"}
           spacing={6}
         >
+          {/* <LoginLink
+            postLoginRedirectURL="/blogs"
+            as={"a"}
+            fontSize={"sm"}
+            fontWeight={400}
+            variant={"link"}
+          >
+            {" "}
+            Sign In
+          </LoginLink> */}
           <Button
             as={"a"}
             fontSize={"sm"}
             fontWeight={400}
             variant={"link"}
-            href={"#"}
+            onClick={() => signIn()}
           >
             Sign In
           </Button>
+          {/* <RegisterLink
+            postLoginRedirectURL="/page.jsx"
+            as={"a"}
+            display={{ base: "none", md: "inline-flex" }}
+            fontSize={"sm"}
+            fontWeight={600}
+            color={"white"}
+            bg={"pink.400"}
+            _hover={{
+              bg: "pink.300",
+            }}
+          >
+            Sign up
+          </RegisterLink> */}
+          {/* Error: The Middleware "/middleware" must export a `middleware` or a
+          `default` function */}
           <Button
             as={"a"}
             display={{ base: "none", md: "inline-flex" }}
@@ -271,6 +298,7 @@ const NAV_ITEMS = [
       {
         label: "Explore Design Work",
         subLabel: "Trending Design to inspire you",
+
         href: "/blogs",
       },
       {
