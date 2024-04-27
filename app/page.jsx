@@ -1,6 +1,7 @@
 import connecteDb from "@/config/db";
 import Blog from "@/models/posts";
 import CallToActionWithIllustration from "@/components/Hero";
+import SmallWithSocial from "@/components/footer";
 import { signIn } from "@/auth";
 
 export default async function Home() {
@@ -54,6 +55,7 @@ export default async function Home() {
       <CallToActionWithIllustration />
 
       <h1>Welcome to learn french</h1>
+      <SmallWithSocial />
     </>
   );
 }
