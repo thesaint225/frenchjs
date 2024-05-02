@@ -27,8 +27,10 @@ import NextLink from "next/link";
 import { Link } from "@chakra-ui/react";
 import { signIn } from "next-auth/react";
 
-export default function WithSubnavigation() {
+export default function WithSubnavigation({ isLoggedIn }) {
   const { isOpen, onToggle } = useDisclosure();
+
+  console.log("isLoggedIn", isLoggedIn);
 
   return (
     <Box>
@@ -87,15 +89,18 @@ export default function WithSubnavigation() {
             {" "}
             Sign In
           </LoginLink> */}
-          <Button
-            as={"a"}
-            fontSize={"sm"}
-            fontWeight={400}
-            variant={"link"}
-            onClick={() => signIn()}
-          >
-            Sign In
-          </Button>
+          {isLoggedIn === false && (
+            <Button
+              as={"a"}
+              fontSize={"sm"}
+              fontWeight={400}
+              variant={"link"}
+              onClick={() => signIn()}
+            >
+              Sign In
+            </Button>
+          )}
+
           {/* <RegisterLink
             postLoginRedirectURL="/page.jsx"
             as={"a"}

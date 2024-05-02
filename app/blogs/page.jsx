@@ -1,3 +1,4 @@
+import BlogCard from "@/components/BlogCard";
 import BlogEditForm from "@/components/BlogEditForm";
 import ButtonDelete from "@/components/Buttondelete";
 
@@ -27,15 +28,16 @@ const Blogspage = async () => {
     <>
       <main className="max-w-5xl mx-auto flex flex-row flex-wrap justify-center">
         {blogs.map((blog) => {
+          return <BlogCard key={blog._id} blog={blog} />;
+        })}
+        {blogs.map((blog) => {
           return (
             <div
               key={blog._id}
               className="bg-white overflow-hidden shadow-sm rounded-lg w-80 m-4"
             >
-              {/* Title */}
               <h1 className="text-3xl font-bold p-6 border-b">{blog.title}</h1>
 
-              {/* Owner */}
               <div className="flex items-center p-6 border-b">
                 <div>
                   <h2 className="text-lg font-semibold">{blog.owner}</h2>
@@ -43,12 +45,10 @@ const Blogspage = async () => {
                 </div>
               </div>
 
-              {/* Description */}
               <p className="text-gray-600 text-lg p-6 border-b">
                 {blog.description}
               </p>
 
-              {/* Content */}
               <div className="prose p-6">
                 <p>{blog.content}</p>
                 <ButtonDelete _id={blog._id} />

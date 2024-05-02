@@ -3,6 +3,7 @@ import Blog from "@/models/posts";
 import CallToActionWithIllustration from "@/components/Hero";
 import SmallWithSocial from "@/components/footer";
 import { signIn } from "@/auth";
+import BlogCard from "@/components/BlogCard";
 
 export default async function Home() {
   console.log(process.env.MONGODB_URI);
@@ -53,9 +54,9 @@ export default async function Home() {
   return (
     <>
       <CallToActionWithIllustration />
-
       <h1>Welcome to learn french</h1>
       <SmallWithSocial />
+      {/* <BlogCard /> */}
     </>
   );
 }
