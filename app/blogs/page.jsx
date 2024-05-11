@@ -24,6 +24,7 @@ const Blogspage = async () => {
   const blogs = await fetchblogs();
   //   console.log(blogs);
   //   console.log(blogs.length);
+
   return (
     <>
       <main className="max-w-5xl mx-auto flex flex-row flex-wrap justify-center">

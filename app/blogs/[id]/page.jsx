@@ -1,7 +1,7 @@
 "use client";
 import { useEffect, useState } from "react";
 import { useParams } from "next/navigation";
-import { fetchBlog } from "@/utils/request";
+import { fetchBlog } from "@/utility/request";
 import ArticleList from "@/components/SinglePost";
 
 const Blogpage = () => {

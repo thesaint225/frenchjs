@@ -1,5 +1,5 @@
 "use client";
-import { fetchBlog } from "@/utils/request";
+import { fetchBlog } from "@/utility/request";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 

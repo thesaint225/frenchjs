@@ -1,11 +1,21 @@
-import React from "react";
+import fetchblogs from "@/utility/fetchblogs";
 
-function Dashboard() {
+const Dashboard = async () => {
+  const blogs = await fetchblogs();
+  console.log(blogs);
+
   return (
     <div>
-      <h1>Dashboard</h1>
+      {blogs.map((blog) => {
+        return (
+          <div>
+            key={blog._id}
+            <h1>{blog.title}</h1>
+          </div>
+        );
+      })}
     </div>
   );
-}
+};
 
 export default Dashboard;

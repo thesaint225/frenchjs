@@ -9,7 +9,7 @@
 
 import { useState, useEffect } from "react";
 import { useParams } from "next/navigation";
-import { fetchBlog } from "@/utils/request";
+import { fetchBlog } from "@/utility/request";
 const BlogPage = () => {
   const { id } = useParams();
 
