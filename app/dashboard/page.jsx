@@ -1,3 +1,6 @@
+import AdminDashboard from "@/components/AdminDashbord";
+import BlogCard from "@/components/BlogCard";
+import ButtonDelete from "@/components/Buttondelete";
 import fetchblogs from "@/utility/fetchblogs";
 
 const Dashboard = async () => {
@@ -5,16 +8,13 @@ const Dashboard = async () => {
   console.log(blogs);
 
   return (
-    <div>
-      {blogs.map((blog) => {
-        return (
-          <div>
-            key={blog._id}
-            <h1>{blog.title}</h1>
-          </div>
-        );
-      })}
-    </div>
+    <>
+      <main className="max-w-5xl mx-auto flex flex-row flex-wrap justify-center">
+        {blogs.map((blog) => {
+          return <AdminDashboard key={blog._id} blog={blog} />;
+        })}
+      </main>
+    </>
   );
 };
 
