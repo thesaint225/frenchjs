@@ -1,6 +1,10 @@
 "use client";
 import { Heading } from "@chakra-ui/react";
 import { useState } from "react";
+import ReactQuill from "react-quill";
+import "react-quill/dist/quill.snow.css";
+import parse from "html-react-parser";
+
 const { log } = console;
 const blogpage = () => {
   const [owner, setOwner] = useState("");
@@ -116,7 +120,7 @@ const blogpage = () => {
             >
               Content
             </label>
-            <textarea
+            {/* <textarea
               onChange={({ target }) => setContent(target?.value)}
               id="content"
               name="content"
@@ -124,7 +128,17 @@ const blogpage = () => {
               rows="6"
               className="w-full px-4 py-2 border rounded-md resize-none focus:outline-none focus:border-blue-500"
               required
-            ></textarea>
+            ></textarea> */}
+            <ReactQuill theme="snow" value={content} />
+          </div>
+
+          <div className="mb-6">
+            <label className="block text-gray-700 font-semibold mb-2">
+              Content Preview
+            </label>
+            <div className="w-full px-4 py-2 border rounded-md">
+              {parse(content)}
+            </div>
           </div>
 
           {/* Submit Button */}

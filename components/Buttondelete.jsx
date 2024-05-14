@@ -1,5 +1,7 @@
 "use client";
 
+import { Button } from "@chakra-ui/react";
+
 const ButtonDelete = ({ _id }) => {
   const handleDelete = async () => {
     try {
@@ -20,12 +22,15 @@ const ButtonDelete = ({ _id }) => {
   };
   return (
     <div>
-      <button
+      <Button variant="solid" colorScheme="red" onClick={handleDelete}>
+        Delete
+      </Button>
+      {/* <button
         className="bg-red-500 hover:bg-red-600 text-white font-semibold px-4 py-2 rounded-md focus:outline-none focus:bg-red-600"
         onClick={handleDelete}
       >
         Delete
-      </button>
+      </button> */}
     </div>
   );
 };
