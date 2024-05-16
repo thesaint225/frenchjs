@@ -1,9 +1,11 @@
 "use client";
-import { Heading } from "@chakra-ui/react";
+import { Box, Button, Flex, Heading } from "@chakra-ui/react";
 import { useState } from "react";
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
 import parse from "html-react-parser";
+
+import Statistic from "@/components/Statistic";
 
 const { log } = console;
 const blogpage = () => {
@@ -151,6 +153,7 @@ const blogpage = () => {
           </button>
         </form>
       </div>
+      <Statistic />
     </Heading>
   );
 };
