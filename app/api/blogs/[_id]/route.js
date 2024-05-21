@@ -11,7 +11,7 @@ export const DELETE = async (request, { params: { _id } }) => {
 
     const blog = await Blog.findByIdAndDelete(_id);
 
-    if (!blog) return new Response("Property not found", { status: 404 });
+    if (!blog) return new Response("Blog  not found", { status: 404 });
 
     revalidatePath("/blogs");
     redirect("/blogs");

@@ -13,6 +13,8 @@ const blogpage = () => {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [content, setContent] = useState("");
+  const [slug, setSlug] = useState("");
+
   const [submitted, setSubmitted] = useState(false);
 
   log(owner);

@@ -18,7 +18,9 @@ function Feature({ title, desc, _id }) {
     <VStack spacing={4} align="stretch">
       <Card>
         <CardHeader>
-          <Heading size="md">{title}</Heading>
+          <Heading size="md">
+            <Link href={`/blogs/${_id}`}>{title}</Link>
+          </Heading>
         </CardHeader>
         <CardBody>
           <Text>{desc}</Text>

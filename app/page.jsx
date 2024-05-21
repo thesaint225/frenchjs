@@ -30,6 +30,12 @@ export default async function Home() {
     content: "regarder les filles ",
   });
 
+  const newPost = new Blog({
+    title: "My First Blog Post in french",
+    description: "This is the description of my first blog post",
+    content: "his is the content of my first blog post. ",
+  });
+
   console.log(newBlog, newBlog1);
 
   newBlog,
@@ -43,6 +49,15 @@ export default async function Home() {
       });
 
   newBlog2
+    .save()
+    .then((savedBlog) => {
+      console.log("blog saved successfully:", savedBlog);
+    })
+    .catch((error) => {
+      console.error("Error saving blog:", error);
+    });
+
+  newPost
     .save()
     .then((savedBlog) => {
       console.log("blog saved successfully:", savedBlog);
