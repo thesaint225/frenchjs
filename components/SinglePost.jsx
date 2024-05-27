@@ -14,6 +14,9 @@ import {
   VStack,
   Center, // Import Center component
 } from "@chakra-ui/react";
+import { marked } from "marked";
+
+import { CldImage } from "next-cloudinary";
 
 const BlogTags = (props) => {
   const { marginTop = 0, tags } = props;
@@ -54,6 +57,13 @@ const ArticleList = ({ blog }) => {
       {/* Wrap the content in Center component */}
       <Container maxW={"7xl"} p="12">
         <Heading as="h1">{blog.title}</Heading>
+        <CldImage
+          width="960"
+          height="600"
+          src=""
+          sizes="100vw"
+          alt="Description of my image"
+        />
         {/* <Box
           marginTop={{ base: "1", sm: "5" }}
           display="flex"
@@ -172,19 +182,11 @@ const ArticleList = ({ blog }) => {
           <VStack paddingTop="40px" spacing="2" alignItems="flex-start">
             <Heading as="h2">What we write about</Heading>
             <Text as="p" fontSize="lg">
-              {/* Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec
-              condimentum quam arcu, eu tempus tortor molestie at. Vestibulum
-              pretium condimentum dignissim. Vestibulum ultrices vitae nisi sed
-              imperdiet. Mauris quis erat consequat, commodo massa quis, feugiat
-              sapien. Suspendisse placerat vulputate posuere. Curabitur neque
-              tortor, mattis nec lacus non, placerat congue elit. */}
-              {blog.content}
-            </Text>
-            <Text as="p" fontSize="lg">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec
-              condimentum quam arcu, eu tempus tortor molestie at. Vestibulum
-              pretium condimentum dignissim. Vestibulum ultrices vitae nisi sed
-              imperdiet
+              <div
+                dangerouslySetInnerHTML={{
+                  __html: marked(blog.content),
+                }}
+              />
             </Text>
           </VStack>
         }

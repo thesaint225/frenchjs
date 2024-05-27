@@ -11,6 +11,7 @@ import {
   useColorModeValue,
 } from "@chakra-ui/react";
 import { useSearchParams } from "next/navigation";
+import { Link } from "@chakra-ui/react";
 
 export default function BlogCard({ blog }) {
   return (
@@ -32,15 +33,7 @@ export default function BlogCard({ blog }) {
           mx={-6}
           mb={6}
           pos={"relative"}
-        >
-          {/* <Image
-            src={
-              "https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"
-            }
-            fill
-            alt="Example"
-          /> */}
-        </Box>
+        ></Box>
         <Stack>
           <Text
             color={"green.500"}
@@ -57,7 +50,7 @@ export default function BlogCard({ blog }) {
             fontSize={"2xl"}
             fontFamily={"body"}
           >
-            {blog.title}
+            <Link href={`/blogs/${blog.slug}`}>{blog.title}</Link>
           </Heading>
           <Text color={"gray.500"}>
             Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam

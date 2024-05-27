@@ -22,10 +22,10 @@ export const DELETE = async (request, { params: { _id } }) => {
 };
 
 // GET api/blogs/:id
-export const GET = async (req, { params: { _id } }) => {
+export const GET = async (req, { params: { slug } }) => {
   try {
     await connecteDb();
-    const blog = await Blog.findById({ _id });
+    const blog = await Blog.findOne({ slug });
     if (!blog) return new Response("blog Not Found", { status: 400 });
     return new Response(JSON.stringify(blog), {
       status: 200,

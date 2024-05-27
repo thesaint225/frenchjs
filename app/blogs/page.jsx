@@ -1,6 +1,8 @@
 import BlogCard from "@/components/BlogCard";
+
 import BlogEditForm from "@/components/BlogEditForm";
 import ButtonDelete from "@/components/Buttondelete";
+import { Link } from "@chakra-ui/react";
 
 async function fetchblogs() {
   try {
@@ -22,41 +24,15 @@ async function fetchblogs() {
 
 const Blogspage = async () => {
   const blogs = await fetchblogs();
-  //   console.log(blogs);
+  console.log(blogs);
   //   console.log(blogs.length);
 
   return (
     <>
       <main className="max-w-5xl mx-auto flex flex-row flex-wrap justify-center">
-        {blogs.map((blog) => {
-          return <BlogCard key={blog._id} blog={blog} />;
-        })}
-        {blogs.map((blog) => {
-          return (
-            <div
-              key={blog._id}
-              className="bg-white overflow-hidden shadow-sm rounded-lg w-80 m-4"
-            >
-              <h1 className="text-3xl font-bold p-6 border-b">{blog.title}</h1>
-
-              <div className="flex items-center p-6 border-b">
-                <div>
-                  <h2 className="text-lg font-semibold">{blog.owner}</h2>
-                  {/* <p className="text-gray-600">Author</p> */}
-                </div>
-              </div>
-
-              <p className="text-gray-600 text-lg p-6 border-b">
-                {blog.description}
-              </p>
-
-              <div className="prose p-6">
-                <p>{blog.content}</p>
-                <ButtonDelete _id={blog._id} />
-              </div>
-            </div>
-          );
-        })}
+        {blogs.map((blog) => (
+          <BlogCard key={blog.slug} blog={blog} />
+        ))}
       </main>
     </>
   );

@@ -60,7 +60,7 @@ const Editpage = ({ params }) => {
     const getBlog = async () => {
       const blog = await fetchBlog(params.id);
       console.log(blog);
-      // setOwner(blog.owner);
+      setOwner(blog.owner);
       setDescription(blog.description);
       setTitle(blog.title);
       setContent(blog.content);

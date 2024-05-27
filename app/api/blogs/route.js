@@ -32,7 +32,7 @@ export const POST = async (request) => {
 
     const req = await request.json();
 
-    console.log(req);
+    console.log("req", req);
 
     // Create a new blog instance
     const newBlog = new Blog(req);

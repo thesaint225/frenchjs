@@ -1,12 +1,12 @@
 // FETCH SINGLE PROPERTY
 const apiDomain = "http://localhost:3000/api/" || null;
 
-async function fetchBlog(_id) {
+async function fetchBlog(slug) {
   try {
     if (!apiDomain) {
       return null;
     }
-    const res = await fetch(`${apiDomain}/blogs/${_id}`);
+    const res = await fetch(`${apiDomain}/blogs/${slug}`);
     if (!res.ok) {
       throw new Error("Failed to fetch data");
     }

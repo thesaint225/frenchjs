@@ -29,6 +29,8 @@ const Statistic = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    const plainContent = parse(content);
+
     const teamPayload = {
       owner,
       title,
@@ -173,7 +175,10 @@ const Statistic = () => {
                   formats={formats}
                 />
               </div>
+
+              {/* cloudinary */}
             </div>
+
             <button
               type="submit"
               className="inline-flex items-center px-5 py-2.5 mt-4 sm:mt-6 text-sm font-medium text-center text-white bg-purple-700 rounded-lg focus:ring-4 focus:ring-purple-200 dark:focus:ring-purple-900 hover:bg-purple-800"
@@ -219,6 +224,11 @@ const Statistic = () => {
                 Blog Content
               </h2>
               {parse(content)}
+            </div>
+            <div className="sm:col-span-full">
+              <h2 className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                Blog Image
+              </h2>
             </div>
           </div>
         </div>

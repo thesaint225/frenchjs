@@ -5,15 +5,15 @@ import { fetchBlog } from "@/utility/request";
 import ArticleList from "@/components/SinglePost";
 
 const Blogpage = () => {
-  const { id } = useParams();
+  const { slug } = useParams();
   const [blog, setBlog] = useState(null);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchBlogData = async () => {
-      if (!id) return;
+      if (!slug) return;
       try {
-        const blog = await fetchBlog(id);
+        const blog = await fetchBlog(slug);
         setBlog(blog);
       } catch (error) {
         console.error("Error fetching blog:", error);
@@ -24,7 +24,7 @@ const Blogpage = () => {
     if (blog === null) {
       fetchBlogData();
     }
-  }, [id, blog]);
+  }, [slug, blog]);
 
   if (!blog && !loading) {
     <h1 className="text-center text-2xl font-bold">Blog Not found</h1>;
