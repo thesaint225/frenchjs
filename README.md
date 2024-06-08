@@ -120,3 +120,44 @@ export default async (req, res) => {
 
 - Data Fetching: Use the useEffect hook to fetch data based on the dynamic id.
 - Utility Functions and Components: Organize your code into utility functions and reusable components for clean and maintainable code.
+
+<h1> Cloudinary</h1>
+
+The Node.js SDK (Software Development Kit) for Cloudinary is a powerful library that allows developers to easily interact with Cloudinary's APIs from a Node.js environment. This SDK simplifies the process of uploading, managing, transforming, and delivering media files (images, videos, etc.) in your Node.js applications.
+
+In Next.js, environment variables prefixed with NEXT*PUBLIC* are exposed to the browser. This means that these variables can be accessed both on the server and client sides. Here’s a detailed explanation of why and how NEXT*PUBLIC is used:
+Why Use NEXT_PUBLIC
+Client-Side Access: By default, environment variables in a Next.js application are only available on the server side. If you need to access these variables in your client-side code (e.g., React components or client-side JavaScript), you must prefix them with NEXT_PUBLIC*.
+
+Security and Best Practices: It’s important to only expose environment variables that are safe to be public. Using the NEXT*PUBLIC* prefix is a clear indicator that these variables are intended for use in the browser and should not contain sensitive information like API secrets or database credentials.
+
+Consistency: Using NEXT*PUBLIC* helps maintain a clear and consistent configuration strategy, ensuring that only intended variables are exposed to the client.
+
+How to Use NEXT*PUBLIC Variables
+Define Environment Variables: In your .env file, prefix the variables you want to expose with NEXT_PUBLIC*.
+
+<h3> MediaGallery component</h3 >The is a React component that displays a collection of media items (e.g., images, videos) fetched from Cloudinary. This component receives the media resources as props and renders them in a structured format, such as a grid or a list.
+
+when working with image we should always think about optimization
+
+Responsive Images
+Responsive images are critical for page performance and they're made easy with the CldImage component.
+
+The CldImage component takes advantage of responsive images generated using the Next Image component which allows you to simply specify the sizes you want and the component handles the rest.
+
+example of code
+
+```
+  import { CldImage } from 'next-cloudinary';
+
+  <CldImage
+    width="960"
+    height="600"
+    src="<Your Public ID>"
+    sizes="(max-width: 768px) 100vw,
+          (max-width: 1200px) 50vw,
+          33vw"
+    alt="Description"
+  />
+
+```

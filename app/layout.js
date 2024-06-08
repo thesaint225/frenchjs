@@ -1,11 +1,10 @@
-import { Providers } from "./providers";
+import { Providers as UIProviders } from "./providers";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import WithSubnavigation from "@/components/Navbar";
 import SmallWithSocial from "@/components/footer";
 import AuthProvider from "@/components/AuthProvider";
 import { auth } from "@/auth";
-
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
@@ -19,13 +18,12 @@ export default async function RootLayout({ children }) {
   console.log(session);
   return (
     <AuthProvider>
-      <html lang="en">
+      <html lang="en" suppressHydrationWarning>
         <body className={inter.className}>
-          <Providers>
+          <UIProviders>
             <WithSubnavigation isLoggedIn={!session ? false : true} />
             {children}
-            {/* <SmallWithSocial /> */}
-          </Providers>
+          </UIProviders>
         </body>
       </html>
     </AuthProvider>

@@ -26,6 +26,7 @@ import {
 import NextLink from "next/link";
 import { Link } from "@chakra-ui/react";
 import { signIn } from "next-auth/react";
+import { ThemeSwitcher } from "./ThemeSwitcher";
 
 export default function WithSubnavigation({ isLoggedIn }) {
   const { isOpen, onToggle } = useDisclosure();
@@ -131,6 +132,7 @@ export default function WithSubnavigation({ isLoggedIn }) {
           >
             Sign Up
           </Button>
+          <ThemeSwitcher />
         </Stack>
       </Flex>
 
