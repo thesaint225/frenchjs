@@ -1,13 +1,10 @@
-"use client";
 import AdminDashboard from "@/components/AdminDashbord";
 import BlogCard from "@/components/BlogCard";
 import ButtonDelete from "@/components/Buttondelete";
 import fetchblogs from "@/utility/fetchblogs";
 import { Box, Button, Link } from "@chakra-ui/react";
-import { pickerOverlay } from "filestack-react";
 
 const Dashboard = async () => {
-  const [showPicker, setShowPicker] = useState(false);
   const blogs = await fetchblogs();
   console.log(blogs);
 

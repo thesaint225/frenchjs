@@ -161,3 +161,11 @@ example of code
   />
 
 ```
+
+<h3>HOW TO TO USE CLOUDINARY</h3>
+
+1.alow the user to upload the pictures to cloudinary throught the cldButton provided by cloudinary which include the CldUploadWidget [click to for the documenation](https://next.cloudinary.dev/clduploadbutton/basic-usage)
+
+2.cldImage
+the public id is given to you when you uploadyour image to cloudinary. also when clicking on the image the publicid is displayed.
+when have to listen to the upload to complete before getting the id
