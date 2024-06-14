@@ -5,8 +5,6 @@ import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
 import parse from "html-react-parser";
 import Statistic from "@/components/Statistic";
-import { CldUploadButton } from "next-cloudinary";
-import { CldImage } from "next-cloudinary";
 
 const { log } = console;
 const blogpage = () => {
@@ -16,14 +14,14 @@ const blogpage = () => {
   const [content, setContent] = useState("");
   const [slug, setSlug] = useState("");
   const [submitted, setSubmitted] = useState(false);
-  // learning cloudinary
-
-  const [imageId, setImageId] = useState("");
+  const [image, setImage] = useState("");
 
   log(owner);
   log(title);
   log(description);
   log(content);
+
+  // creating a function that to upload the image
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -33,6 +31,7 @@ const blogpage = () => {
       title,
       description,
       content: plainContent,
+      image,
     };
     log("Payload:", teamPayload);
     setSubmitted(true);
@@ -60,16 +59,6 @@ const blogpage = () => {
     <>
       <Heading>
         <Statistic />
-        <CldUploadButton uploadPreset="pcgb9hrq" />
-        {imageId && (
-          <CldImage
-            width="960"
-            height="600"
-            src="{imageId}"
-            sizes="100vw"
-            alt="Description of my image"
-          />
-        )}
       </Heading>
     </>
   );

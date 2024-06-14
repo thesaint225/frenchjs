@@ -5,6 +5,8 @@ import "react-quill/dist/quill.snow.css";
 import { useState } from "react";
 import slugify from "slugify";
 import parse from "html-react-parser";
+import { CldUploadButton } from "next-cloudinary";
+import { CldImage } from "next-cloudinary";
 
 const Statistic = () => {
   const [owner, setOwner] = useState("");
@@ -12,6 +14,7 @@ const Statistic = () => {
   const [description, setDescription] = useState("");
   const [content, setContent] = useState("");
   const [slug, setSlug] = useState("");
+  const [image, setImage] = useState("");
 
   const [submitted, setSubmitted] = useState(false);
 
@@ -27,6 +30,12 @@ const Statistic = () => {
     setSlug(autoSlug);
   };
 
+  const handleUpload = (result) => {
+    console.log(result);
+    setImage(result.info.secure_url);
+    console.log(image);
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     const plainContent = parse(content);
@@ -35,7 +44,8 @@ const Statistic = () => {
       owner,
       title,
       description,
-      content,
+      content: plainContent,
+      image,
     };
     console.log("Payload:", teamPayload);
     setSubmitted(true);
@@ -178,6 +188,17 @@ const Statistic = () => {
 
               {/* cloudinary */}
             </div>
+
+            <CldUploadButton uploadPreset="pcgb9hrq" onUpload={handleUpload} />
+            {image && (
+              <CldImage
+                width="960"
+                height="600"
+                src={image}
+                sizes="100vw"
+                alt="Description of my image"
+              />
+            )}
 
             <button
               type="submit"

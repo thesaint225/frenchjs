@@ -169,3 +169,10 @@ example of code
 2.cldImage
 the public id is given to you when you uploadyour image to cloudinary. also when clicking on the image the publicid is displayed.
 when have to listen to the upload to complete before getting the id
+
+```const handleUpload = (result: any) => {
+    console.log(result);
+  };
+```
+
+The result parameter in the handleUpload function represents the response data returned by Cloudinary after a file has been successfully uploaded. This data typically includes various details about the uploaded file, such as its URL, public ID, dimensions, format, and other metadata.
