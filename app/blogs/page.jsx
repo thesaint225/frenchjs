@@ -24,7 +24,7 @@ const Blogspage = async () => {
 
   return (
     <>
-      <main className="max-w-5xl mx-auto flex flex-row flex-wrap justify-center">
+      <main className="max-w-5xl mx-auto">
         {blogs.map((blog) => (
           <BlogCard key={blog.slug} blog={blog} />
         ))}

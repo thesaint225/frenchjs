@@ -44,7 +44,7 @@ const Statistic = () => {
       owner,
       title,
       description,
-      content: plainContent,
+      content,
       image,
     };
     console.log("Payload:", teamPayload);

@@ -1,31 +1,17 @@
-"use client";
+// "use client";
 
 import {
-  Box,
-  Center,
   Heading,
   Text,
   Stack,
-  Avatar,
-  useColorModeValue,
-  SimpleGrid,
   Card,
-  CardHeader,
   CardBody,
   CardFooter,
   Button,
-  Flex,
-  IconButton,
-  BsThreeDotsVertical,
-  BiLike,
-  BiChat,
-  BiShare,
   Image,
+  VStack,
 } from "@chakra-ui/react";
-import { useSearchParams } from "next/navigation";
 import { Link } from "@chakra-ui/react";
-
-import { CldImage } from "next-cloudinary";
 
 export default function BlogCard({ blog }) {
   return (
@@ -104,30 +90,61 @@ export default function BlogCard({ blog }) {
     //   </Box>
     // </Center>
 
+    // <Card
+    //   direction={{ base: "column", sm: "row" }}
+    //   overflow="hidden"
+    //   variant="outline"
+    //   spacing={4}
+    //   mt={4}
+    // >
+    //   <Image
+    //     objectFit="cover"
+    //     maxW={{ base: "100%", sm: "200px" }}
+    //     src="https://images.unsplash.com/photo-1667489022797-ab608913feeb?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHw5fHx8ZW58MHx8fHw%3D&auto=format&fit=crop&w=800&q=60"
+    //     alt="Caffe Latte"
+    //   />
+
+    //   {/* <Stack spacing={4} p={4} w="full" h="full"> */}
+
+    //   <VStack spacing={4} p={4} align="stretch" flex="1">
+    //     <CardBody>
+    //       <Heading size="md">{blog.title}</Heading>
+
+    //       <Text py="2" noOfLines={4}>
+    //         {blog.description}
+    //         Caffè latte is a coffee beverage of Italian origin made with
+    //         espresso and steamed milk.
+    //       </Text>
+    //     </CardBody>
+
+    //     <CardFooter>
+    //       <Button variant="solid" colorScheme="blue">
+    //         <Link href={`/blogs/${blog.slug}`}>lesson</Link>
+    //       </Button>
+    //     </CardFooter>
+    //     {/* </Stack> */}
+    //   </VStack>
+    // </Card>
     <Card
       direction={{ base: "column", sm: "row" }}
       overflow="hidden"
       variant="outline"
-      spacing={4}
-      mt={4}
+      mt={2}
     >
       <Image
         objectFit="cover"
         maxW={{ base: "100%", sm: "200px" }}
-        src="https://images.unsplash.com/photo-1667489022797-ab608913feeb?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHw5fHx8ZW58MHx8fHw%3D&auto=format&fit=crop&w=800&q=60"
+        src={blog.image}
         alt="Caffe Latte"
+        borderRadius="12px"
+        fontSize="16px"
       />
 
-      <Stack spacing={4}>
+      <Stack>
         <CardBody>
-          <Heading size="md">
-            <Link href={`/blogs/${blog.slug}`}>{blog.title}</Link>
-          </Heading>
+          <Heading size="md">{blog.title}</Heading>
 
-          <Text py="2">
-            Caffè latte is a coffee beverage of Italian origin made with
-            espresso and steamed milk.
-          </Text>
+          <Text py="2">{blog.description}</Text>
         </CardBody>
 
         <CardFooter>
