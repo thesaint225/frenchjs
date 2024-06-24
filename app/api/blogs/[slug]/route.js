@@ -4,14 +4,12 @@ import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 
 // Delete/api/blogs
-export const DELETE = async (request, { params: { _id } }) => {
-  console.log("This is the id:", _id);
+export const DELETE = async (request, { params: { slug } }) => {
+  console.log("This is the id:", slug);
   try {
     await connecteDb();
 
-    const blog = await Blog.findByIdAndDelete(_id);
-
-    if (!blog) return new Response("Blog  not found", { status: 404 });
+    await Blog.findOneAndDelete({ slug });
 
     revalidatePath("/blogs");
     redirect("/blogs");

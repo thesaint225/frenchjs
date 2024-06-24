@@ -23,6 +23,38 @@ const blogpage = () => {
 
   // creating a function that to upload the image
 
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const plainContent = parse(content);
+    const teamPayload = {
+      owner,
+      title,
+      description,
+      content: plainContent,
+      image,
+    };
+    log("Payload:", teamPayload);
+    setSubmitted(true);
+    setOwner("");
+    setTitle("");
+    setDescription("");
+    setContent("");
+
+    // send data over the server
+    try {
+      const res = await fetch(`${process.env.NEXT_PUBLIC_API_DOMAIN}/blogs`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(teamPayload),
+      });
+      const data = await res.json();
+      log("response back", data);
+    } catch (error) {
+      log("Error", error);
+    }
+  };
   return (
     <>
       <Heading>

@@ -1,4 +1,4 @@
-// FETCH SINGLE PROPERTY
+// FETCH SINGLE BLOG
 const apiDomain = "http://localhost:3000/api/" || null;
 
 async function fetchBlog(slug) {

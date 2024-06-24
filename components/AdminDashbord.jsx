@@ -5,50 +5,49 @@ import {
   CardFooter,
   Center,
   Link,
+  StackDivider,
 } from "@chakra-ui/react";
 import { Image } from "@chakra-ui/react";
-import { Stack, HStack, VStack } from "@chakra-ui/react";
+import { Stack } from "@chakra-ui/react";
 import { Heading } from "@chakra-ui/react";
 import { Text } from "@chakra-ui/react";
-import { Button, ButtonGroup } from "@chakra-ui/react";
-import { Row } from "react-bootstrap";
 import ButtonDelete from "./Buttondelete";
-function Feature({ title, desc, _id }) {
+function Feature({ title, desc, _id, slug }) {
+  console.log(slug);
   return (
-    <VStack spacing={4} align="stretch">
-      <Card>
-        <CardHeader>
-          <Heading size="md">
-            <Link href={`/blogs/${_id}`}>{title}</Link>
-          </Heading>
-        </CardHeader>
-        <CardBody>
-          <Text>{desc}</Text>
-        </CardBody>
-        <CardFooter>
-          <HStack spacing={4}>
-            {/* <Button variant="solid" colorScheme="green">
-              <Link href="/dashboard/addblog">Add</Link>
-            </Button> */}
-            <Button variant="solid" colorScheme="blue">
-              <Link href={`/dashboard/${_id}/edit`}> Edit </Link>
-            </Button>
+    <>
+      <Card
+        direction={{ base: "column", sm: "row" }}
+        overflow="hidden"
+        variant="outline"
+        mt={6}
+      >
+        <Image
+          objectFit="cover"
+          maxW={{ base: "100%", sm: "200px" }}
+          src="https://images.unsplash.com/photo-1667489022797-ab608913feeb?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHw5fHx8ZW58MHx8fHw%3D&auto=format&fit=crop&w=800&q=60"
+          alt="Caffe Latte"
+        />
 
-            <ButtonDelete _id={_id} />
-          </HStack>
-        </CardFooter>
+        <Stack>
+          <CardBody>
+            <Heading size="md">
+              <Link href={`/blogs/${_id}`}>{title}</Link>
+            </Heading>
+
+            <Text py="2">{desc}</Text>
+          </CardBody>
+
+          <CardFooter>
+            <ButtonDelete slug={slug} />
+          </CardFooter>
+        </Stack>
       </Card>
-    </VStack>
+    </>
   );
 }
 
 const AdminDashboard = ({ blog }) => {
-  const getFirst15Words = (content) => {
-    // Split the content into an array of words
-    const words = content.split(" ");
-    // Take the 15 words and join them back into string
-    return words.slice(0, 15).join(" ");
-  };
   // return (
   //   // <Stack spacing={4} direction="column" align="center">
   //   <VStack
@@ -97,8 +96,13 @@ const AdminDashboard = ({ blog }) => {
   // );
   return (
     <>
-      <Stack spacing={8} direction="row">
-        <Feature title={blog.title} desc={blog.content} _id={blog._id} />
+      <Stack divider={<StackDivider />} spacing="4">
+        <Feature
+          title={blog.title}
+          desc={blog.content}
+          _id={blog._id}
+          slug={blog.slug}
+        />
       </Stack>
     </>
   );
