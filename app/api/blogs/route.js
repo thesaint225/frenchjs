@@ -1,14 +1,13 @@
 import connecteDb from "@/config/db";
 import Blog from "@/models/posts";
 
-const { log } = console;
-
 // GET api/blogs
 export const GET = async (req) => {
   try {
     await connecteDb();
     const blogs = await Blog.find({});
-    // console.log(blogs);
+
+    console.log("blogs", blogs);
     // console.log(blogs.length + 1);
     return new Response(JSON.stringify(blogs), {
       status: 200,

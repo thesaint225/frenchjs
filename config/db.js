@@ -1,4 +1,5 @@
-// the database is used to connect to mongo db  through
+// mongoose  his used to connect the the application to the database
+// that is the mongo db
 // i have to install mongoose and import it
 //you create async await function
 

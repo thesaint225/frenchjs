@@ -8,6 +8,7 @@ import {
   Text,
   useColorModeValue,
   VisuallyHidden,
+  Center,
 } from "@chakra-ui/react";
 import { FaInstagram, FaTwitter, FaYoutube } from "react-icons/fa";
 import { ReactNode } from "react";
@@ -52,6 +53,7 @@ export default function SmallWithSocial() {
         align={{ base: "center", md: "center" }}
       >
         <Text>© 2024 French js. All rights reserved</Text>
+
         <Stack direction={"row"} spacing={6}>
           <SocialButton label={"Twitter"} href={"#"}>
             <FaTwitter />
