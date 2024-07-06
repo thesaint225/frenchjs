@@ -301,7 +301,7 @@ const MobileNavItem = ({ label, children, href }) => {
 const NAV_ITEMS = [
   {
     label: "french lessons",
-    href: "/blogs",
+    href: "/lessons",
     children: [
       {
         // label: "Explore Design Work",

@@ -60,7 +60,7 @@ const ArticleList = ({ blog }) => {
         <CldImage
           width="960"
           height="600"
-          src=""
+          src={blog.image}
           sizes="100vw"
           alt="Description of my image"
         />

@@ -4,7 +4,7 @@ import { useParams } from "next/navigation";
 import { fetchBlog } from "@/utility/request";
 import ArticleList from "@/components/SinglePost";
 
-const Blogpage = () => {
+const BlogPage = () => {
   const { slug } = useParams();
   const [blog, setBlog] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -41,4 +41,4 @@ const Blogpage = () => {
   );
 };
 
-export default Blogpage;
+export default BlogPage;

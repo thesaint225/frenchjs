@@ -33,7 +33,7 @@ import { useParams } from "next/navigation";
 import { fetchBlog } from "@/utility/request";
 import ArticleList from "@/components/SinglePost";
 
-const Blogpage = () => {
+const BlogPage = () => {
   const { id } = useParams(); // Retrieve the dynamic id
   const [blog, setBlog] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -61,7 +61,7 @@ const Blogpage = () => {
   return <>{!loading && blog && <ArticleList blog={blog} />}</>;
 };
 
-export default Blogpage;
+export default BlogPage;
 ```
 
 3. fetchBlog Utility Function:
