@@ -1,12 +1,11 @@
-// FETCH SINGLE BLOG
-const apiDomain = "http://localhost:3000/api/" || null;
-
 async function fetchBlog(slug) {
   try {
-    if (!apiDomain) {
+    if (!process.env.NEXT_PUBLIC_API_DOMAIN) {
       return null;
     }
-    const res = await fetch(`${apiDomain}/blogs/${slug}`);
+    const res = await fetch(
+      `${process.env.NEXT_PUBLIC_API_DOMAIN}/blogs/${slug}`
+    );
     if (!res.ok) {
       throw new Error("Failed to fetch data");
     }
