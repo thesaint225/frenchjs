@@ -38,9 +38,14 @@ export default function BlogCard({ blog }) {
         </CardBody>
 
         <CardFooter>
-          <Button variant="solid" colorScheme="blue">
-            <Link href={`/blogs/${blog.slug}`}>lesson</Link>
-          </Button>
+          <Stack spacing={4} direction="row" align="center">
+            <Button variant="solid" colorScheme="blue">
+              <Link href={`/blogs/${blog.slug}`}>lesson</Link>
+            </Button>
+            <Button variant="solid" colorScheme="cyan">
+              exercise
+            </Button>
+          </Stack>
         </CardFooter>
       </Stack>
     </Card>

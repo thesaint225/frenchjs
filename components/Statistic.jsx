@@ -166,7 +166,7 @@ const Statistic = () => {
                   onChange={(e) => setDescription(e.target.value)}
                   value={description}
                   className="block p-2.5 w-full text-sm text-gray-900 bg-white rounded-lg border border-gray-300 focus:ring-purple-500 focus:border-purple-500 "
-                  placeholder="Write your thoughts here..."
+                  placeholder="write  your thoughts here..."
                 ></textarea>
               </div>
               {/* Content */}
@@ -183,6 +183,7 @@ const Statistic = () => {
                   onChange={setContent}
                   modules={modules}
                   formats={formats}
+                  placeholder="start write"
                 />
               </div>
 
@@ -259,3 +260,10 @@ const Statistic = () => {
 };
 
 export default Statistic;
+
+function handleTitle(e) {
+  const newTitle = e.target.value;
+  setTitle(newTitle);
+  const autoSlug = generateSlug(newTitle);
+  setSlug(autoSlug);
+}
