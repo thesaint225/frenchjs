@@ -51,7 +51,7 @@ export const POST = async (request) => {
   } catch (error) {
     console.error(error);
     return new Response(
-      JSON.stringify({ message: "error occured while creating questions" }),
+      JSON.stringify({ message: "error occurred while creating questions" }),
       { status: 500 }
     );
   }

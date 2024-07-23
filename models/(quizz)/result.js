@@ -1,35 +1,36 @@
 import { Schema, model, models } from "mongoose";
 
-const ResultSchema = new Schema(
-  {
-    User: {
-      Type: String,
-      required: true,
-    },
-    score: {
-      Type: Number,
-      required: true,
-    },
-    totalQuestions: {
-      Type: Number,
-      required: true,
-    },
-    correctAnswser: {
-      Type: Number,
-      required: true,
-    },
-    date: {
-      type: Date,
-      default: Date.now,
-    },
+const ResultSchema = new Schema({
+  user: {
+    type: String,
+    required: true,
   },
-  {
-    Question: {
-      type: Schema.Types.ObjectId,
-      ref: Question,
-    },
-  }
-);
+  score: {
+    type: Number,
+    required: true,
+  },
+  totalQuestions: {
+    type: Number,
+    required: true,
+  },
+  correctAnswer: {
+    type: Number,
+    required: true,
+  },
+  date: {
+    type: Date,
+    default: Date.now,
+  },
+  question: {
+    type: Schema.Types.ObjectId,
+    ref: "Question",
+    required: true,
+  },
+  selectedOption: {
+    type: Schema.Types.ObjectId,
+    required: true,
+  },
+});
 
 const Result = models.Result || model("Result", ResultSchema);
 
