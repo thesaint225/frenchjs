@@ -1,10 +1,10 @@
-import CreateQuestion from "@/components/(questions)/CreateQuestion";
+import QuestionForm from "@/components/(questions)/QuestionForm";
 import React from "react";
 
 const ExercisePage = () => {
   return (
     <div>
-      <CreateQuestion />
+      <QuestionForm />
     </div>
   );
 };

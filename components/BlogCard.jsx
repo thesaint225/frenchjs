@@ -12,7 +12,6 @@ import {
   VStack,
 } from "@chakra-ui/react";
 import { Link } from "@chakra-ui/react";
-import CreateQuestion from "./(questions)/CreateQuestion";
 
 export default function BlogCard({ blog }) {
   return (
@@ -43,9 +42,7 @@ export default function BlogCard({ blog }) {
             <Button variant="solid" colorScheme="blue">
               <Link href={`/blogs/${blog.slug}`}>lesson</Link>
             </Button>
-            <Button variant="solid" colorScheme="cyan">
-              {/* <CreateQuestion /> */}
-            </Button>
+            <Button variant="solid" colorScheme="cyan"></Button>
           </Stack>
         </CardFooter>
       </Stack>
