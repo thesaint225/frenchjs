@@ -13,74 +13,50 @@ import {
 
 const QuestionForm = () => {
   const [questions, setQuestions] = useState([
-    { text: "", checkedItems: [false, false, false] },
-    { text: "", checkedItems: [false, false, false] },
-    { text: "", checkedItems: [false, false, false] },
+    { title: "", options: [false, false, false] },
   ]);
-  const [isMounted, setIsMounted] = useState(false);
-
-  useEffect(() => {
-    setIsMounted(true);
-  }, []);
+  const handleTitleChange = (index, value) => {
+    const newQuestions = [...questions];
+    newQuestions[index] = value;
+    setQuestions(newQuestions);
+  };
 
   const handleCheckboxChange = (qIndex, cIndex) => {
     const newQuestions = [...questions];
-    const newCheckedItems = [false, false, false];
-    newCheckedItems[cIndex] = true;
-    newQuestions[qIndex].checkedItems = newCheckedItems;
+    newQuestions[qIndex].options[cIndex] =
+      !newQuestions[qIndex].options[cIndex];
     setQuestions(newQuestions);
   };
 
-  const handleQuestionChange = (index, value) => {
-    const newQuestions = [...questions];
-    newQuestions[index].text = value;
-    setQuestions(newQuestions);
+  const addQuestion = () => {
+    setQuestions([...questions, { title: "", options: [false, false, false] }]);
   };
 
-  const createQuestion = aync (question)=>{
-    const response = await fetch($`{process.env.NEXT_PUBLIC_API_DOMAIN}/questions`,{
-      method:'POST',
-      headers:{
-        'Content-Type':'application/json'
-      },
-      body:JSON.stringify(question)
+  const handleSubmit = async () => {
+    try {
+      const res = await fetch(
+        `${process.env.NEXT_PUBLIC_API_DOMAIN}/questions`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(teamPayload),
+        }
+      );
+      const data = await res.json();
+      log("response back", data);
+    } catch (error) {
+      log("Error", error);
     }
-      
-    )
-  }
-
-  const updateQuestionWithCheckboxes = (qIndex, cIndex, value) => {
-    const newQuestions = [...questions];
-    const newCheckedItems = [false, false, false];
-    newCheckedItems[cIndex] = value;
-    newQuestions[qIndex].checkedItems = newCheckedItems;
-    setQuestions(newQuestions);
   };
-
-  const handleSubmit = () => {
-    // Logic to handle form submission
-    console.log(questions);
-    // For example, you could send the questions data to an API endpoint
-    // fetch('/api/questions', {
-    //   method: 'POST',
-    //   headers: {
-    //     'Content-Type': 'application/json',
-    //   },
-    //   body: JSON.stringify({ questions }),
-    // });
-  };
-
-  if (!isMounted) {
-    return null; // or a loading indicator
-  }
-
   return (
     <Flex
       direction="column"
       alignItems="center"
       justifyContent="center"
-      height="100vh" // Full viewport height to center vertically
-      bg="gray.50" // Optional: Background color for better visibility
+      height="100vh"
+      bg="gray.50"
     >
       {questions.map((question, qIndex) => (
         <Box
@@ -89,37 +65,34 @@ const QuestionForm = () => {
           bg="white"
           boxShadow="md"
           borderRadius="md"
-          width={{ base: "90%", md: "50%" }} // Responsive width
-          mb={6} // Margin bottom for spacing between questions
+          width={{ base: "90%", md: "50%" }}
+          mb={6}
         >
           <Input
-            placeholder={`Write your question ${qIndex + 1} here`}
-            value={question.text}
-            onChange={(e) => handleQuestionChange(qIndex, e.target.value)}
-            mb={4} // Margin bottom for spacing
+            placeholder={`Enter question ${qIndex + 1}`}
+            value={question.title}
+            onChange={(e) => handleTitleChange(qIndex, e.target.value)}
+            mb={4}
           />
           <Stack pl={6} mt={1} spacing={1}>
-            {question.checkedItems.map((isChecked, cIndex) => (
+            {(question.options || []).map((isChecked, cIndex) => (
               <Checkbox
                 key={cIndex}
                 isChecked={isChecked}
                 onChange={() => handleCheckboxChange(qIndex, cIndex)}
               >
-                Child Checkbox {cIndex + 1}
+                Option {cIndex + 1}
               </Checkbox>
             ))}
           </Stack>
-          <Box mt={4}>
-            <Text fontWeight="bold">Your Question {qIndex + 1}:</Text>
-            <Text>{question.text}</Text>
-          </Box>
-          <Button onClick={updateQuestionWithCheckboxes}>update</Button>
         </Box>
       ))}
-      <Button onClick={handleSubmit} colorScheme="blue" size="md">
+      <Button onClick={addQuestion} colorScheme="teal" size="md">
+        Add Question
+      </Button>
+      <Button onClick={handleSubmit} colorScheme="blue" size="md" mt={4}>
         Submit
       </Button>
-      <Button onClick={addQuestionWithCheckboxes}>add question</Button>
     </Flex>
   );
 };
